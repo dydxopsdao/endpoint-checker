@@ -2,10 +2,17 @@
 
 This Python script tests the status of endpoints specified in a JSON file and writes the results to a CSV file. It utilizes the `requests` library to make HTTP requests to the endpoints.
 
-## Dependencies
+## Preparation
 
 1. Ensure you have Python installed on your system.
-2. Install the required dependencies using pip:
+
+2. (Optional) Prepare a virtual env:
+```
+python3 -m venv .python_venv
+. .python_venv/bin/activate
+```
+
+3. Install the required dependencies using pip:
 ```
 pip install requests
 ```
@@ -30,6 +37,7 @@ pip install requests
 ```
 
 ## Usage
+
 Create a JSON file named `endpoints.json` with the following structure:
 ```json
 [
@@ -45,13 +53,21 @@ Create a JSON file named `endpoints.json` with the following structure:
 ]
 
 ```
-Run the script by executing the following command
+
+Run the script by executing the following command:
 ```
-python endpoint_checker.py
+python test_endpoints.py
 ```
+
 This will test the endpoints specified in `endpoints.json` and generate a CSV file named `endpoint_status.csv` with the results.
 
+If you see an OpenSSL warning, try:
+```
+pip install urllib3==1.26.15
+```
+
 ## Output
+
 The script generates a CSV file named `endpoint_status.csv` with the following columns:
 - name: The name of the service as provided in the JSON file.
 - endpoint: The endpoint URL that was tested.
